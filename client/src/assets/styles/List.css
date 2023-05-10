@@ -1,0 +1,31 @@
+.list {
+  @apply mt-3;
+}
+
+.listTitle {
+  @apply text-white text-2xl ml-[3.75rem] font-medium;
+}
+
+.wrapper {
+  @apply relative;
+
+  &:hover > .sliderArrow {
+    @apply block;
+  }
+
+  & > .sliderArrow {
+    @apply absolute top-0 bottom-0 m-auto h-full w-[3.125rem] bg-[rgba(22,22,22,0.5)] text-white cursor-pointer z-50 hidden;
+  }
+
+  & > .right {
+    @apply right-0;
+  }
+
+  & > .left {
+    @apply left-0;
+  }
+}
+
+.container {
+  @apply ml-[3.75rem] mt-1 flex gap-1 min-w-max mb-[3.75rem] translate-x-0 transition-all ease-linear duration-500 hover:cursor-pointer;
+}

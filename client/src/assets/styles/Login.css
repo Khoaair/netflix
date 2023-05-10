@@ -1,0 +1,61 @@
+.login {
+  @apply w-[100vw] h-[100vh] relative bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/efb4855d-e702-43e5-9997-bba0154152e0/d9d1144a-d86f-449b-b110-641145dee09d/VN-en-20230417-popsignuptwoweeks-perspective_alpha_website_large.jpg')];
+}
+
+.wrapper {
+  @apply px-[3.75rem] py-5 flex items-center justify-between;
+}
+.logo {
+  @apply h-10;
+}
+
+.LoginContainer {
+  @apply h-full w-full absolute top-0 left-0 flex items-center justify-center text-white;
+}
+
+.login-content {
+  @apply bg-main  w-[28.125rem] px-16;
+
+  & > h1 {
+    @apply text-4xl mb-7 mt-[3.75rem];
+  }
+
+  & > form {
+    @apply flex flex-col gap-4;
+
+    & > input {
+      @apply h-[3.125rem] bg-[#333333] rounded-md p-2 placeholder:text-white;
+    }
+
+    & > .loginButton {
+      @apply h-12 rounded-md bg-[#e50914] mt-6;
+    }
+
+    & > .form-help {
+      @apply flex items-center justify-between mb-[7.4375rem] text-xs text-[#b3b3b3] -mt-1;
+
+      & > p {
+        @apply hover:underline underline-offset-1;
+      }
+    }
+  }
+
+  & > .bottom {
+    @apply flex flex-col gap-3 mb-10;
+
+    & > span {
+      @apply text-sm text-[#737373] mt-4;
+      & > b {
+        @apply text-white cursor-pointer;
+      }
+    }
+
+    & > small {
+      @apply text-xs text-[#8c8c8c] mb-10;
+
+      & > b {
+        @apply text-[#0071eb];
+      }
+    }
+  }
+}

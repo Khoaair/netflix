@@ -1,0 +1,28 @@
+.nav-container {
+  background: linear-gradient(to top, transparent 0%, rgb(0, 0, 0, 0.3) 50%);
+  @apply w-full text-white px-[3.75rem] flex items-center justify-between fixed top-0 z-[999];
+}
+.nav-scrolled {
+  @apply bg-main;
+}
+.nav-logo {
+  @apply h-[25px] mr-[40px];
+}
+.nav-avatar {
+  @apply w-[30px] h-[30px] rounded-md object-cover hover:cursor-pointer;
+}
+.nav-left {
+  @apply flex items-center text-sm  h-[68px];
+}
+.nav-right {
+  @apply flex items-center gap-5;
+}
+.profile {
+  @apply hover:cursor-pointer;
+  &:hover > .options {
+    @apply flex flex-col;
+  }
+}
+.options {
+  @apply hidden absolute right-24 top-16 bg-main px-[10px] py-[15px] text-white text-[13px] w-[190px] outline outline-1 outline-white;
+}

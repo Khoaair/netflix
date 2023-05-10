@@ -1,0 +1,11 @@
+@import './assets/styles/Navbar.css';
+@import './assets/styles/Global.css';
+@import './assets/styles/Featured.css';
+@import './assets/styles/List.css';
+@import './assets/styles/ListItems.css';
+@import './assets/styles/Watch.css';
+@import './assets/styles/Register.css';
+@import './assets/styles/Login.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

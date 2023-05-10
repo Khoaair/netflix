@@ -1,0 +1,42 @@
+.featured {
+  @apply h-[90vh] relative text-white;
+
+  & > .category {
+    @apply absolute top-20 left-[3.75rem] first-line:font-bold text-white flex items-center gap-12;
+
+    & > span {
+      @apply text-3xl;
+    }
+
+    & > select {
+      @apply bg-main border border-solid text-base p-[0.3125rem];
+    }
+  }
+
+  & > img {
+    @apply w-full h-full object-cover;
+  }
+
+  & > .info {
+    @apply w-4/12 absolute bottom-52  left-[3.75rem] flex flex-col;
+
+    & > img {
+      @apply w-[25rem];
+    }
+    & > .desc {
+      @apply my-7 text-[1.375rem];
+    }
+  }
+}
+.buttons {
+  @apply flex gap-4;
+  & > button {
+    @apply rounded-md flex items-center cursor-pointer border-none py-[0.625rem] pl-8 pr-10 text-[1.5rem] font-bold;
+  }
+  & > .play {
+    @apply bg-white text-black hover:opacity-80;
+  }
+  & > .more {
+    @apply bg-[#6d6d6e] text-white hover:opacity-70;
+  }
+}

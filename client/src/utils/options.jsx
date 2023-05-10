@@ -1,0 +1,15 @@
+export const filmOptions = [
+  { id: 1, value: 'adventure', option: 'Adventure' },
+  { id: 2, value: 'comedy', option: 'Comedy' },
+  { id: 3, value: 'crime', option: 'Crime' },
+  { id: 4, value: 'fantasy', option: 'Fantasy' },
+  { id: 5, value: 'historical', option: 'Historical' },
+  { id: 6, value: 'horror', option: 'Horror' },
+  { id: 7, value: 'romance', option: 'Romance' },
+  { id: 8, value: 'sci-fi', option: 'Sci-fi' },
+  { id: 9, value: 'thriller', option: 'Thriller' },
+  { id: 10, value: 'western', option: 'Western' },
+  { id: 11, value: 'animation', option: 'Animation' },
+  { id: 12, value: 'drama', option: 'Drama' },
+  { id: 13, value: 'documentary', option: 'Documentary' },
+];

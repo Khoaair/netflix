@@ -1,0 +1,9 @@
+.watch {
+  @apply w-[100vw] h-[100vh];
+}
+.back {
+  @apply flex items-center gap-1 text-xl text-white absolute top-3 left-3 cursor-pointer z-50;
+}
+.video {
+  @apply w-full h-full object-cover;
+}
