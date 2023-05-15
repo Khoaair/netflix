@@ -7,11 +7,11 @@ const MovieSchema = new mongoose.Schema(
     img: { type: String },
     imgTitle: { type: String },
     imgSm: { type: String },
+    trailer: { type: String },
     video: { type: String },
     year: { type: String },
     limit: { type: Number },
     gerne: { type: String },
-    isSerie: { type: Boolean },
     isSeries: { type: Boolean },
   },
   { timestamps: true }
