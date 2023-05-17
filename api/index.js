@@ -6,6 +6,7 @@ const authRoute = require('./Routes/auth');
 const userRoute = require('./Routes/users');
 const moviesRoute = require('./Routes/movies');
 const listRoute = require('./Routes/lists');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ mongoose
   .catch(err => console.log(err));
 
 app.use(express.json());
+app.use(cors());
 
 // Route and other middleware
 app.use('/api/auth', authRoute);
