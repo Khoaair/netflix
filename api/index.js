@@ -17,8 +17,8 @@ mongoose
   })
   .catch(err => console.log(err));
 
-app.use(express.json());
 app.use(cors());
+app.use(express.json());
 
 // Route and other middleware
 app.use('/api/auth', authRoute);
