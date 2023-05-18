@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import {
   ArrowBackIosNewOutlined,
@@ -6,7 +7,7 @@ import {
 import React, { useRef, useState } from 'react';
 import ListItems from '../components/ListItems';
 
-const List = ({list}) => {
+const List = ({ list }) => {
   const [slideNumber, setSlideNumber] = useState(0);
   const [isMoved, setIsMoved] = useState(false);
   const listRef = useRef();
@@ -35,9 +36,8 @@ const List = ({list}) => {
           style={{ display: !isMoved && 'none' }}
         />
         <div className='container' ref={listRef}>
-          {list.content.map((item,index) => {
-
-          <ListItems key={index} index={index} list = {item} />
+          {list.content.map((item, index) => {
+            return <ListItems key={index} index={index} item={item} />;
           })}
         </div>
         <ArrowForwardIosOutlined

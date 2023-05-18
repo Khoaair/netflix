@@ -1,1 +1,1 @@
-export const listsURL = 'http://localhost:8800/api/';
+export const dataUrl = 'http://localhost:8800/api/';
