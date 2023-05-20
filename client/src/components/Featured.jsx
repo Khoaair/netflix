@@ -3,16 +3,17 @@ import { InfoOutlined, PlayArrow, VolumeUp } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { filmOptions } from '../utils/options';
 import axios from 'axios';
+import { dataUrl } from '../utils/constant';
 
 // eslint-disable-next-line react/prop-types
 const Featured = ({ type }) => {
-  const [content, setContent] = useState({});
+  const [content, setContent] = useState([]);
 
   useEffect(() => {
     const getRandomMovie = async () => {
       try {
         const res = await axios.get(
-          `/movies/random?type=${type ? type : 'movies'}`,
+          `${dataUrl}movies/random?type=${type ? type : 'movies'}`,
           {
             headers: {
               token:
@@ -20,15 +21,14 @@ const Featured = ({ type }) => {
             },
           }
         );
-        console.log(res.data);
-        setContent(res.data);
+        setContent(res.data[0]);
       } catch (error) {
         console.log(error);
       }
     };
     getRandomMovie();
   }, [type]);
-
+  console.log(content);
   return (
     <div className='featured'>
       {type && (
@@ -47,21 +47,13 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img
-        src='https://images.unsplash.com/photo-1599803654935-5b9d1c93578c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80'
-        alt='featured image'
-      />
+      <img src={content.img} alt='featured image' />
       <div className='info'>
         <img
           src='http://occ-0-58-300.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABS6y6LFtVFyveiCaehIQtC-eX0iRwVlUlWYXEIjPqv1TTG2v7ExkGoH05aVVvDGBQilebZsnTbx891IwIzIoDv65AQQMsevtaphs-cTWC4CbUyCM6--YK06ndiJiaUGZ10AY5GpIvjApRN3wYLZF3sl7pmYpZKsB_4m8b53BI2VujEYXwSYD1Q.png?r=cce'
           alt=''
         />
-        <span className='desc'>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae,
-          laudantium quidem libero, iusto odit culpa laborum perferendis
-          exercitationem suscipit, temporibus a fugiat esse maiores! Alias
-          adipisci dolore facilis voluptatibus. Optio.
-        </span>
+        <span className='desc'>{content.desc}</span>
         <div className='buttons'>
           <button className='play'>
             <PlayArrow sx={{ fontSize: '2.125rem' }} />
