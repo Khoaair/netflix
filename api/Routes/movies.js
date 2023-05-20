@@ -52,16 +52,6 @@ router.delete('/:id', verify, async (req, res) => {
   }
 });
 
-// GET
-router.get('/:id', verify, async (req, res) => {
-  try {
-    const movie = await Movie.findById(req.params.id);
-    return res.status(200).json(movie);
-  } catch (err) {
-    return res.status(500).json(err);
-  }
-});
-
 // GET RANDOM
 router.get('/random', verify, async (req, res) => {
   const type = req.query.type;
@@ -78,6 +68,16 @@ router.get('/random', verify, async (req, res) => {
         { $sample: { size: 1 } },
       ]);
     }
+    return res.status(200).json(movie);
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+});
+
+// GET
+router.get('/:id', verify, async (req, res) => {
+  try {
+    const movie = await Movie.findById(req.params.id);
     return res.status(200).json(movie);
   } catch (err) {
     return res.status(500).json(err);
