@@ -1,22 +1,19 @@
 const authReducer = (state, action) => {
   if (action.type === 'LOGIN_START') {
     return {
-      user: null,
+      ...state,
       isFetching: true,
-      error: false,
     };
   }
   if (action.type === 'LOGIN_SUCCESS') {
     return {
+      ...state,
       user: action.payload,
-      isFetching: false,
-      error: false,
     };
   }
   if (action.type === 'LOGIN_FAILURE') {
     return {
-      user: null,
-      isFetching: false,
+      ...state,
       error: true,
     };
   }
