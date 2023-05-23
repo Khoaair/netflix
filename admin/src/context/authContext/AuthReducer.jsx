@@ -17,6 +17,16 @@ const authReducer = (state, action) => {
       error: true,
     };
   }
+  if(action.type === 'LOGOUT_START'){
+    return {
+      ...state, isFetching:true
+    }
+  }
+  if(action.type === 'LOGOUT_SUCCESS'){
+    return {
+      ...state, 
+    }
+  }
 };
 
 export default authReducer;

@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './widgetSm.css';
 import { Visibility } from '@material-ui/icons';
 import axios from 'axios';
+import { AuthContext } from '../../context/authContext/authContext';
 
 export default function WidgetSm() {
   const url = 'http://localhost:8800/api/';
   const [newUsers, setNewUsers] = useState([]);
+  const { user } = useContext(AuthContext);
 
   useEffect(() => {
     const getNewUsers = async () => {
       try {
         const res = await axios.get(`${url}users?new=true`, {
           headers: {
-            token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWY0ZTAzY2E0NGIwZTI4MDEwYjRiZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDMxMDM4NSwiZXhwIjoxNjg0NzQyMzg1fQ.qpVNJEs4DCBzfWoRvEDAWa6viL4PR-v-nJksbxQ-zBs',
+            token: `Bearer ${user.accessToken}`,
           },
         });
         setNewUsers(res.data);
@@ -24,7 +25,6 @@ export default function WidgetSm() {
     getNewUsers();
   }, []);
 
-  console.log(newUsers);
   return (
     <div className='widgetSm'>
       <span className='widgetSmTitle'>New Join Members</span>
