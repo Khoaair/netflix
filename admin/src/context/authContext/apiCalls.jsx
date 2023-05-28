@@ -1,11 +1,10 @@
-import axios from 'axios';
 import { loginFailure, loginStart, loginSuccess } from './AuthActions';
+import customFetch from '../../utils/axios';
 
 export const login = async (user, dispatch) => {
-  const url = 'http://localhost:8800/api/';
   dispatch(loginStart());
   try {
-    const res = await axios.post(`${url}auth/login`, user);
+    const res = await customFetch.post('/auth/login', user);
     res.data.isAdmin && dispatch(loginSuccess(res.data));
   } catch (error) {
     dispatch(loginFailure());
