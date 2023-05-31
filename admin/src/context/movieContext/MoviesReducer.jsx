@@ -8,6 +8,19 @@ const MoviesReduer = (state, action) => {
   if (action.type === 'GET_MOVIES_FAILURE') {
     return { ...state };
   }
+  if (action.type === 'CREATE_MOVIE_START') {
+    return { ...state, isFeching: true };
+  }
+  if (action.type === 'CREATE_MOVIE_SUCCESS') {
+    return {
+      ...state,
+      isFeching: false,
+      movie: [...state.movies, action.payload],
+    };
+  }
+  if (action.type === 'CREATE_MOVIE_FAILURE') {
+    return { ...state };
+  }
   if (action.type === 'DELETE_MOVIE_START') {
     return { ...state, isFeching: true };
   }

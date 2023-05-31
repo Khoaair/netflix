@@ -35,7 +35,7 @@ export default function Product() {
               <span className='productInfoValue'>{movie.year}</span>
             </div>
             <div className='productInfoItem'>
-              <span className='productInfoKey'>linit:</span>
+              <span className='productInfoKey'>limit:</span>
               <span className='productInfoValue'>{movie.limit}</span>
             </div>
           </div>
@@ -50,8 +50,6 @@ export default function Product() {
             <input type='text' placeholder={movie.year} />
             <label>Gerne</label>
             <input type='text' placeholder={movie.gerne} />
-            <label>Duration</label>
-            <input type='text' placeholder={movie.duration} />
             <label>Limit</label>
             <input type='text' placeholder={movie.limit} />
             <label>Trailer</label>

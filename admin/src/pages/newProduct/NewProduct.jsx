@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './newProduct.css';
 import storage from '../../utils/firebase';
+import { getDownloadURL, ref, uploadBytesResumable } from 'firebase/storage';
+import { createMovie } from '../../context/movieContext/apiCalls';
+import { MoviesContext } from '../../context/movieContext/MoviesContext';
 
 export default function NewProduct() {
   const [movie, setMovie] = useState(null);
@@ -11,6 +14,13 @@ export default function NewProduct() {
   const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
 
+  const { dispatch } = useContext(MoviesContext);
+
+  const handleOption = e => {
+    let value = JSON.parse(e.target.value);
+    setMovie({ ...movie, [e.target.name]: value });
+  };
+
   const handleChange = e => {
     let value = e.target.value;
     setMovie({ ...movie, [e.target.name]: value });
@@ -18,9 +28,11 @@ export default function NewProduct() {
 
   const upload = items => {
     items.forEach(item => {
-      const uploadTask = storage.ref(`/item/${item.file.name}`).put(item);
+      const fileName = new Date().getTime() + item.label + item.file.name;
+      const storageRef = ref(storage, `/items/${fileName}`);
+      const uploadTask = uploadBytesResumable(storageRef, item.file);
       uploadTask.on(
-        'state_change',
+        'state_changed',
         snapshot => {
           const progress =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
@@ -28,7 +40,7 @@ export default function NewProduct() {
         },
         err => console.log(err),
         () => {
-          uploadTask.snapshot.ref.getDownLoadURL().then(url => {
+          getDownloadURL(uploadTask.snapshot.ref).then(url => {
             setMovie(prev => {
               return { ...prev, [item.label]: url };
             });
@@ -42,12 +54,17 @@ export default function NewProduct() {
   const handleUpload = e => {
     e.preventDefault();
     upload([
-      { files: image, label: 'image' },
-      { files: imageTitle, label: 'imageTitle' },
-      { files: imageSm, label: 'imageSm' },
-      { files: trailer, label: 'trailer' },
-      { files: video, label: 'video' },
+      { file: image, label: 'image' },
+      { file: imageTitle, label: 'imageTitle' },
+      { file: imageSm, label: 'imageSm' },
+      { file: trailer, label: 'trailer' },
+      { file: video, label: 'video' },
     ]);
+  };
+
+  const handleCreate = e => {
+    e.preventDefault();
+    createMovie(movie, dispatch);
   };
 
   return (
@@ -60,7 +77,7 @@ export default function NewProduct() {
             type='file'
             id='image'
             name='image'
-            onChange={e => setImage(e.target.files)}
+            onChange={e => setImage(e.target.files[0])}
           />
         </div>
         <div className='addProductItem'>
@@ -118,6 +135,15 @@ export default function NewProduct() {
           />
         </div>
         <div className='addProductItem'>
+          <label>Limit</label>
+          <input
+            type='text'
+            placeholder='Limit'
+            name='gerne'
+            onChange={handleChange}
+          />
+        </div>
+        <div className='addProductItem'>
           <label>Duration</label>
           <input
             type='text'
@@ -129,10 +155,8 @@ export default function NewProduct() {
 
         <div className='addProductItem'>
           <label>Is Series ?</label>
-          <select id='isSeries' name='isSeires' onChange={handleChange}>
-            <option value='false' defaultValue={false}>
-              No
-            </option>
+          <select id='isSeries' name='isSeires' onChange={handleOption}>
+            <option value='false'>No</option>
             <option value='true'>Yes</option>
           </select>
         </div>
@@ -141,7 +165,7 @@ export default function NewProduct() {
           <input
             type='file'
             name='trailer'
-            onChange={e => setTrailer(e.target.files)}
+            onChange={e => setTrailer(e.target.files[0])}
           />
         </div>
         <div className='addProductItem'>
@@ -149,11 +173,13 @@ export default function NewProduct() {
           <input
             type='file'
             name='video'
-            onChange={e => setVideo(e.target.files)}
+            onChange={e => setVideo(e.target.files[0])}
           />
         </div>
         {uploaded === 5 ? (
-          <button className='addProductButton'>Create</button>
+          <button className='addProductButton' onClick={handleCreate}>
+            Create
+          </button>
         ) : (
           <button className='addProductButton' onClick={handleUpload}>
             Upload
