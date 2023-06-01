@@ -34,14 +34,14 @@ router.delete('/:id', verify, async (req, res) => {
 // GET
 router.get('/', verify, async (req, res) => {
   const typeQuery = req.query.type;
-  const gerneQuery = req.query.gerne;
+  const genreQuery = req.query.genre;
   let list = [];
   try {
     if (typeQuery) {
-      if (gerneQuery) {
+      if (genreQuery) {
         list = await List.aggregate([
           { $sample: { size: 10 } },
-          { $match: { type: typeQuery, gerne: gerneQuery } },
+          { $match: { type: typeQuery, genre: genreQuery } },
         ]);
       } else {
         list = await List.aggregate([
