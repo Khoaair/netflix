@@ -1,9 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { InfoOutlined, PlayArrow, VolumeUp } from '@mui/icons-material';
+import { InfoOutlined, PlayArrow } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { filmOptions } from '../utils/options';
-import axios from 'axios';
-import { dataUrl } from '../utils/constant';
+import customFetch from '../utils/axios';
+import { accessToken } from '../utils/accessToken';
 
 // eslint-disable-next-line react/prop-types
 const Featured = ({ type }) => {
@@ -12,12 +12,11 @@ const Featured = ({ type }) => {
   useEffect(() => {
     const getRandomMovie = async () => {
       try {
-        const res = await axios.get(
-          `${dataUrl}movies/random?type=${type ? type : 'movies'}`,
+        const res = await customFetch.get(
+          `movies/random?type=${type ? type : 'movies'}`,
           {
             headers: {
-              token:
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWY0ZTAzY2E0NGIwZTI4MDEwYjRiZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDMxMDM4NSwiZXhwIjoxNjg0NzQyMzg1fQ.qpVNJEs4DCBzfWoRvEDAWa6viL4PR-v-nJksbxQ-zBs',
+              token: accessToken,
             },
           }
         );

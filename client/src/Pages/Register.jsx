@@ -1,6 +1,7 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
-
 import React, { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const register = () => {
   const [email, setEmail] = useState('');

@@ -6,10 +6,10 @@ import {
   ThumbDownOutlined,
   ThumbUpOutlined,
 } from '@mui/icons-material';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { dataUrl } from '../utils/constant';
 import { Link } from 'react-router-dom';
+import customFetch from '../utils/axios';
+import { accessToken } from '../utils/accessToken';
 
 const ListItems = ({ item, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -18,10 +18,9 @@ const ListItems = ({ item, index }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await axios.get(`${dataUrl}movies/` + item, {
+        const res = await customFetch.get('movies' + item, {
           headers: {
-            token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWY0ZTAzY2E0NGIwZTI4MDEwYjRiZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDMxMDM4NSwiZXhwIjoxNjg0NzQyMzg1fQ.qpVNJEs4DCBzfWoRvEDAWa6viL4PR-v-nJksbxQ-zBs',
+            token: accessToken,
           },
         });
         setMovie(res.data);
@@ -57,7 +56,7 @@ const ListItems = ({ item, index }) => {
                 <span>{movie.year}</span>
               </div>
               <div className='desc'>{movie.desc}</div>
-              <div className='gerne'>{movie.gerne}</div>
+              <div className='genre'>{movie.genre}</div>
             </div>
           </>
         )}

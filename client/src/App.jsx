@@ -4,7 +4,7 @@ import { Route, BrowserRouter, Routes, Navigate } from 'react-router-dom';
 import { Home, Watch, Error, Login, Register } from './Pages';
 
 function App() {
-  const user = true;
+  const user = false;
   return (
     <BrowserRouter>
       <Routes>

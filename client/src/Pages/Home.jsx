@@ -5,23 +5,22 @@ import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Featured from '../components/Featured';
 import List from '../components/List';
-import { dataUrl } from '../utils/constant';
-
+import customFetch from '../utils/axios';
+import { accessToken } from '../utils/accessToken';
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
-  const [gerne, setGerne] = useState(null);
+  const [genre, setGenre] = useState(null);
 
   useEffect(() => {
     const getRandomLists = async () => {
       try {
-        const res = await axios.get(
-          `${dataUrl}lists${type ? '?type=' + type : ''}${
-            gerne ? '&gerne=' + gerne : ''
+        const res = await customFetch.get(
+          `lists${type ? '?type=' + type : ''}${
+            genre ? '&genre=' + genre : ''
           }`,
           {
             headers: {
-              token:
-                'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWY0ZTAzY2E0NGIwZTI4MDEwYjRiZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDMxMDM4NSwiZXhwIjoxNjg0NzQyMzg1fQ.qpVNJEs4DCBzfWoRvEDAWa6viL4PR-v-nJksbxQ-zBs',
+              token: accessToken,
             },
           }
         );
@@ -31,7 +30,7 @@ const Home = ({ type }) => {
       }
     };
     getRandomLists();
-  }, [type, gerne]);
+  }, [type, genre]);
   return (
     <div className='bg-main overflow-hidden'>
       <Navbar />

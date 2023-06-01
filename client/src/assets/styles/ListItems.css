@@ -39,6 +39,6 @@
 .desc {
   @apply text-sm mb-2;
 }
-.gerne {
+.genre {
   @apply text-base text-gray-300;
 }
