@@ -9,6 +9,9 @@ import {
   createMovieStart,
   createMovieSuccess,
   createMovieFailure,
+  updateMovieStart,
+  updateMovieFailure,
+  updateMovieSuccess,
 } from './MovieActions';
 
 const accessToken = `Bearer ${
@@ -27,6 +30,21 @@ export const getMovies = async dispatch => {
     dispatch(getMoviesSuccess(res.data));
   } catch (error) {
     dispatch(getMoviesFailure());
+  }
+};
+
+// UPDATE
+export const updateMovie = async (id, movie, dispatch) => {
+  dispatch(updateMovieStart());
+  try {
+    const res = await customFetch.put(`movies/${id}`, movie, {
+      headers: {
+        token: accessToken,
+      },
+    });
+    dispatch(updateMovieSuccess(res.data));
+  } catch (error) {
+    dispatch(updateMovieFailure());
   }
 };
 

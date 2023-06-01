@@ -15,10 +15,25 @@ const MoviesReduer = (state, action) => {
     return {
       ...state,
       isFeching: false,
-      movie: [...state.movies, action.payload],
+      movies: [...state.movies, action.payload],
     };
   }
   if (action.type === 'CREATE_MOVIE_FAILURE') {
+    return { ...state };
+  }
+  if (action.type === 'UPDATE_MOVIE_START') {
+    return { ...state, isFeching: true };
+  }
+  if (action.type === 'UPDATE_MOVIE_SUCCESS') {
+    return {
+      ...state,
+      isFeching: false,
+      movies: state.movies.map(
+        movie => movie._id === action.payload._id && action.payload
+      ),
+    };
+  }
+  if (action.type === 'UPDATE_MOVIE_FAILURE') {
     return { ...state };
   }
   if (action.type === 'DELETE_MOVIE_START') {

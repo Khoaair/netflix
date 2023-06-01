@@ -14,7 +14,7 @@ export default function NewProduct() {
   const [video, setVideo] = useState(null);
   const [uploaded, setUploaded] = useState(0);
 
-  const { dispatch } = useContext(MoviesContext);
+  const { dispatch, isFetching } = useContext(MoviesContext);
 
   const handleOption = e => {
     let value = JSON.parse(e.target.value);
@@ -54,9 +54,9 @@ export default function NewProduct() {
   const handleUpload = e => {
     e.preventDefault();
     upload([
-      { file: image, label: 'image' },
-      { file: imageTitle, label: 'imageTitle' },
-      { file: imageSm, label: 'imageSm' },
+      { file: image, label: 'img' },
+      { file: imageTitle, label: 'imgTitle' },
+      { file: imageSm, label: 'imgSm' },
       { file: trailer, label: 'trailer' },
       { file: video, label: 'video' },
     ]);
@@ -76,7 +76,7 @@ export default function NewProduct() {
           <input
             type='file'
             id='image'
-            name='image'
+            name='img'
             onChange={e => setImage(e.target.files[0])}
           />
         </div>
@@ -85,7 +85,7 @@ export default function NewProduct() {
           <input
             type='file'
             id='imageTitle'
-            name='imageTitle'
+            name='imgTitle'
             onChange={e => setImageTitle(e.target.files[0])}
           />
         </div>
@@ -94,7 +94,7 @@ export default function NewProduct() {
           <input
             type='file'
             id='imageSm'
-            name='imageSm'
+            name='imgSm'
             onChange={e => setImgageSm(e.target.files[0])}
           />
         </div>
@@ -139,7 +139,7 @@ export default function NewProduct() {
           <input
             type='text'
             placeholder='Limit'
-            name='gerne'
+            name='limit'
             onChange={handleChange}
           />
         </div>
@@ -155,7 +155,7 @@ export default function NewProduct() {
 
         <div className='addProductItem'>
           <label>Is Series ?</label>
-          <select id='isSeries' name='isSeires' onChange={handleOption}>
+          <select id='isSeries' name='isSeries' onChange={handleOption}>
             <option value='false'>No</option>
             <option value='true'>Yes</option>
           </select>
@@ -177,11 +177,19 @@ export default function NewProduct() {
           />
         </div>
         {uploaded === 5 ? (
-          <button className='addProductButton' onClick={handleCreate}>
+          <button
+            className='addProductButton'
+            onClick={handleCreate}
+            disabled={isFetching}
+          >
             Create
           </button>
         ) : (
-          <button className='addProductButton' onClick={handleUpload}>
+          <button
+            className='addProductButton'
+            onClick={handleUpload}
+            disabled={isFetching}
+          >
             Upload
           </button>
         )}

@@ -20,6 +20,17 @@ export const createMovieFailure = () => ({
   type: 'CREATE_MOVIE_FAILURE',
 });
 
+export const updateMovieStart = () => ({
+  type: 'UPDATE_MOVIE_START',
+});
+export const updateMovieSuccess = movies => ({
+  type: 'UPDATE_MOVIE_SUCCESS',
+  payload: movies,
+});
+export const updateMovieFailure = () => ({
+  type: 'UPDATE_MOVIE_FAILURE',
+});
+
 export const deleteMovieStart = () => ({
   type: 'DELETE_MOVIE_START',
 });
