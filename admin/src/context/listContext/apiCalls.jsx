@@ -6,12 +6,12 @@ import {
   deleteListStart,
   deleteListFailure,
   deleteListSuccess,
-  // createMovieStart,
-  // createMovieSuccess,
-  // createMovieFailure,
-  // updateMovieStart,
-  // updateMovieFailure,
-  // updateMovieSuccess,
+  createListStart,
+  createListSuccess,
+  createListFailure,
+  updateListStart,
+  updateListFailure,
+  updateListSuccess,
 } from './ListActions';
 
 const accessToken = `Bearer ${
@@ -34,34 +34,34 @@ export const getLists = async dispatch => {
 };
 
 // UPDATE
-// export const updateMovie = async (id, movie, dispatch) => {
-//   dispatch(updateMovieStart());
-//   try {
-//     const res = await customFetch.put(`movies/${id}`, movie, {
-//       headers: {
-//         token: accessToken,
-//       },
-//     });
-//     dispatch(updateMovieSuccess(res.data));
-//   } catch (error) {
-//     dispatch(updateMovieFailure());
-//   }
-// };
+export const updateList = async (id, list, dispatch) => {
+  dispatch(updateListStart());
+  try {
+    const res = await customFetch.put(`lists/${id}`, list, {
+      headers: {
+        token: accessToken,
+      },
+    });
+    dispatch(updateListSuccess(res.data));
+  } catch (error) {
+    dispatch(updateListFailure());
+  }
+};
 
 // // CREATE
-// export const createMovie = async (movie, dispatch) => {
-//   dispatch(createMovieStart());
-//   try {
-//     const res = await customFetch.post('/movies', movie, {
-//       headers: {
-//         token: accessToken,
-//       },
-//     });
-//     dispatch(createMovieSuccess(res.data));
-//   } catch (error) {
-//     dispatch(createMovieFailure());
-//   }
-// };
+export const createList = async (list, dispatch) => {
+  dispatch(createListStart());
+  try {
+    const res = await customFetch.post('/lists', list, {
+      headers: {
+        token: accessToken,
+      },
+    });
+    dispatch(createListSuccess(res.data));
+  } catch (error) {
+    dispatch(createListFailure());
+  }
+};
 
 // DELTE
 export const deleteList = async (id, dispatch) => {

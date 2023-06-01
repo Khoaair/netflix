@@ -12,10 +12,10 @@ import Product from './pages/product/Product';
 import NewProduct from './pages/newProduct/NewProduct';
 import Login from './pages/login/Login';
 import ListList from './pages/listList/ListList';
+import NewList from './pages/newList/NewList';
 import { AuthContext } from './context/authContext/authContext';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import List from './pages/list/List';
-// import newList from './pages/newList/newList';
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -56,9 +56,9 @@ function App() {
               <Route path='/list/:listId'>
                 <List />
               </Route>
-              {/* <Route path='/newList'>
-                <newList />
-              </Route> */}
+              <Route path='/newList'>
+                <NewList />
+              </Route>
             </div>
           </>
         )}

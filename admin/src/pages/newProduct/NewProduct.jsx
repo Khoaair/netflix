@@ -17,12 +17,12 @@ export default function NewProduct() {
   const { dispatch, isFetching } = useContext(MoviesContext);
 
   const handleOption = e => {
-    let value = JSON.parse(e.target.value);
+    const value = JSON.parse(e.target.value);
     setMovie({ ...movie, [e.target.name]: value });
   };
 
   const handleChange = e => {
-    let value = e.target.value;
+    const value = e.target.value;
     setMovie({ ...movie, [e.target.name]: value });
   };
 
@@ -126,11 +126,11 @@ export default function NewProduct() {
           />
         </div>
         <div className='addProductItem'>
-          <label>Gerne</label>
+          <label>Genre</label>
           <input
             type='text'
-            placeholder='Gerne'
-            name='gerne'
+            placeholder='Genre'
+            name='genre'
             onChange={handleChange}
           />
         </div>
@@ -156,6 +156,7 @@ export default function NewProduct() {
         <div className='addProductItem'>
           <label>Is Series ?</label>
           <select id='isSeries' name='isSeries' onChange={handleOption}>
+            <option>IsSeries</option>
             <option value='false'>No</option>
             <option value='true'>Yes</option>
           </select>

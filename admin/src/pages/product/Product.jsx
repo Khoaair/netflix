@@ -12,8 +12,8 @@ export default function Product() {
   const { dispatch } = useContext(MoviesContext);
 
   const [movieUpdate, setMovieUpdate] = useState(null);
-  const [trailer, setTrailer] = useState(null);
-  const [video, setVideo] = useState(null);
+  // const [trailer, setTrailer] = useState(null);
+  // const [video, setVideo] = useState(null);
 
   const handleChange = e => {
     let value = e.target.value;
@@ -45,8 +45,8 @@ export default function Product() {
               <span className='productInfoValue'>{movie._id}</span>
             </div>
             <div className='productInfoItem'>
-              <span className='productInfoKey'>gerne:</span>
-              <span className='productInfoValue'>{movie.gerne}</span>
+              <span className='productInfoKey'>genre:</span>
+              <span className='productInfoValue'>{movie.genre}</span>
             </div>
             <div className='productInfoItem'>
               <span className='productInfoKey'>year:</span>
@@ -76,11 +76,11 @@ export default function Product() {
               name='year'
               onChange={handleChange}
             />
-            <label>Gerne</label>
+            <label>Genre</label>
             <input
               type='text'
-              placeholder={movie.gerne}
-              name='gerne'
+              placeholder={movie.genre}
+              name='genre'
               onChange={handleChange}
             />
             <label>Limit</label>

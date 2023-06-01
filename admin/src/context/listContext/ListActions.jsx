@@ -9,27 +9,27 @@ export const getListsFailure = () => ({
   type: 'GET_LISTS_FAILURE',
 });
 
-// export const createMovieStart = () => ({
-//   type: 'CREATE_MOVIE_START',
-// });
-// export const createMovieSuccess = movies => ({
-//   type: 'CREATE_MOVIE_SUCCESS',
-//   payload: movies,
-// });
-// export const createMovieFailure = () => ({
-//   type: 'CREATE_MOVIE_FAILURE',
-// });
+export const createListStart = () => ({
+  type: 'CREATE_LIST_START',
+});
+export const createListSuccess = list => ({
+  type: 'CREATE_LIST_SUCCESS',
+  payload: list,
+});
+export const createListFailure = () => ({
+  type: 'CREATE_LIST_FAILURE',
+});
 
-// export const updateMovieStart = () => ({
-//   type: 'UPDATE_MOVIE_START',
-// });
-// export const updateMovieSuccess = movies => ({
-//   type: 'UPDATE_MOVIE_SUCCESS',
-//   payload: movies,
-// });
-// export const updateMovieFailure = () => ({
-//   type: 'UPDATE_MOVIE_FAILURE',
-// });
+export const updateListStart = () => ({
+  type: 'UPDATE_LIST_START',
+});
+export const updateListSuccess = movies => ({
+  type: 'UPDATE_LIST_SUCCESS',
+  payload: movies,
+});
+export const updateListFailure = () => ({
+  type: 'UPDATE_LIST_FAILURE',
+});
 
 export const deleteListStart = () => ({
   type: 'DELETE_LIST_START',

@@ -1,18 +1,18 @@
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './list.css';
-import { updateMovie } from '../../context/movieContext/apiCalls';
-import { MoviesContext } from '../../context/movieContext/MoviesContext';
+// import { updateMovie } from '../../context/movieContext/apiCalls';
+// import { MoviesContext } from '../../context/movieContext/MoviesContext';
 
 export default function List() {
   const location = useLocation();
   const { list } = location.state;
 
-  const { dispatch } = useContext(MoviesContext);
+  // const { dispatch } = useContext(MoviesContext);
 
   const [movieUpdate, setMovieUpdate] = useState(null);
-  const [trailer, setTrailer] = useState(null);
-  const [video, setVideo] = useState(null);
+  // const [trailer, setTrailer] = useState(null);
+  // const [video, setVideo] = useState(null);
 
   const handleChange = e => {
     let value = e.target.value;
@@ -43,8 +43,8 @@ export default function List() {
               <span className='productInfoValue'>{list._id}</span>
             </div>
             <div className='productInfoItem'>
-              <span className='productInfoKey'>gerne:</span>
-              <span className='productInfoValue'>{list.gerne}</span>
+              <span className='productInfoKey'>genre:</span>
+              <span className='productInfoValue'>{list.genre}</span>
             </div>
             <div className='productInfoItem'>
               <span className='productInfoKey'>type:</span>
@@ -63,18 +63,18 @@ export default function List() {
               name='title'
               onChange={handleChange}
             />
-            <label>Gerne</label>
+            <label>Genre</label>
             <input
               type='text'
-              placeholder={list.gerne}
-              name='year'
+              placeholder={list.genre}
+              name='genre'
               onChange={handleChange}
             />
             <label>Type</label>
             <input
               type='text'
               placeholder={list.type}
-              name='gerne'
+              name='type'
               onChange={handleChange}
             />
           </div>
