@@ -2,12 +2,8 @@
   @apply w-[100vw] h-[100vh] relative bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/efb4855d-e702-43e5-9997-bba0154152e0/d9d1144a-d86f-449b-b110-641145dee09d/VN-en-20230417-popsignuptwoweeks-perspective_alpha_website_large.jpg')];
 }
 
-.top {
-  @apply z-40;
-}
-
 .wrapper {
-  @apply px-[3.75rem] py-5 flex items-center justify-between;
+  @apply px-[3.75rem] py-5 flex items-center justify-between z-40;
 }
 .logo {
   @apply h-10;

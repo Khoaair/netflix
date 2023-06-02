@@ -25,7 +25,9 @@ const register = () => {
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
             alt=''
           />
-          <button className='loginButton'>sign in</button>
+          <Link to='/login' className='loginButton'>
+            sign in
+          </Link>
         </div>
       </div>
       <div className='ResContainer'>

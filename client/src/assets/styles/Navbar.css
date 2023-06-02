@@ -19,7 +19,7 @@
 }
 .profile {
   @apply hover:cursor-pointer;
-  &:hover > .options {
+  & > .options {
     @apply flex flex-col;
   }
 }

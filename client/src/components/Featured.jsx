@@ -6,7 +6,7 @@ import customFetch from '../utils/axios';
 import { accessToken } from '../utils/accessToken';
 
 // eslint-disable-next-line react/prop-types
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState([]);
 
   useEffect(() => {
@@ -27,7 +27,6 @@ const Featured = ({ type }) => {
     };
     getRandomMovie();
   }, [type]);
-  console.log(content);
   return (
     <div className='featured'>
       {type && (
@@ -38,7 +37,7 @@ const Featured = ({ type }) => {
             {filmOptions.map(item => {
               const { id, value, option } = item;
               return (
-                <option key={id} value={value}>
+                <option key={id} value={value} onChange={e => e.target.value}>
                   {option}
                 </option>
               );

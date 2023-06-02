@@ -34,7 +34,7 @@ const Home = ({ type }) => {
   return (
     <div className='bg-main overflow-hidden'>
       <Navbar />
-      <Featured type={type} />
+      <Featured type={type} setGenre={setGenre} />
       {lists.map((list, index) => {
         return <List key={index} list={list} />;
       })}
