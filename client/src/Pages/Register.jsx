@@ -1,21 +1,40 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable no-unused-vars */
 import React, { useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import customFetch from '../utils/axios';
 
 const register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [username, setUsername] = useState('');
 
   const emailRef = useRef();
   const passwordRef = useRef();
+  const usernameRef = useRef();
+
+  const navigate = useNavigate();
 
   const handleStart = () => {
+    setUsername(usernameRef.current.value);
     setEmail(emailRef.current.value);
   };
   const handleFinish = () => {
     setPassword(passwordRef.current.value);
   };
+
+  const handleRegister = async e => {
+    e.preventDefault();
+    try {
+      await customFetch.post('auth/register', { email, username, password });
+      navigate('/login');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  console.log(username, email, password);
+
   return (
     <div className='register'>
       <div className='top'>
@@ -38,15 +57,16 @@ const register = () => {
         </p>
         {!email ? (
           <div className='input'>
+            <input type='username' placeholder='username' ref={usernameRef} />
             <input type='email' placeholder='email address' ref={emailRef} />
-            <button className='registerButton' onClick={() => handleStart()}>
+            <button className='registerButton' onClick={handleStart}>
               Get Started{' '}
             </button>
           </div>
         ) : (
-          <form className='input'>
+          <form className='input' onSubmit={handleRegister}>
             <input type='password' placeholder='password' ref={passwordRef} />
-            <button className='registerButton' onClick={() => handleFinish()}>
+            <button className='registerButton' onClick={handleFinish}>
               Start
             </button>
           </form>

@@ -1,5 +1,6 @@
-import { loginFailure, loginStart, loginSuccess } from './AuthActions';
+import { loginFailure, loginStart, loginSuccess, logout } from './AuthActions';
 import customFetch from '../../utils/axios';
+import { redirect } from 'react-router-dom';
 
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
@@ -9,4 +10,9 @@ export const login = async (user, dispatch) => {
   } catch (error) {
     dispatch(loginFailure());
   }
+};
+
+export const logoutUser = dispatch => {
+  localStorage.removeItem('user');
+  dispatch(logout());
 };

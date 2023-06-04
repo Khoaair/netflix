@@ -32,7 +32,11 @@ const Featured = ({ type, setGenre }) => {
       {type && (
         <div className='category'>
           <span>{type === 'movies' ? 'Movies' : 'Series'}</span>
-          <select name='genre' id='genre'>
+          <select
+            name='genre'
+            id='genre'
+            onChange={e => setGenre(e.target.value)}
+          >
             <option>Genres</option>
             {filmOptions.map(item => {
               const { id, value, option } = item;

@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Navbar from '../components/Navbar';
 import Featured from '../components/Featured';
 import List from '../components/List';

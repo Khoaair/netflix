@@ -17,15 +17,10 @@ const authReducer = (state, action) => {
       error: true,
     };
   }
-  if (action.type === 'LOGOUT_START') {
+  if (action.type === 'LOGOUT') {
     return {
       ...state,
       isFetching: true,
-    };
-  }
-  if (action.type === 'LOGOUT_SUCCESS') {
-    return {
-      ...state,
     };
   }
   return state;

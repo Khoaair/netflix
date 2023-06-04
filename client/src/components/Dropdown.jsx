@@ -1,24 +1,18 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { userAvatar, dropdown } from '../utils/avatar';
+import { AuthContext } from '../context/authContext/authContext';
+import { logoutUser } from '../context/authContext/apiCalls';
+import { redirect, useNavigate } from 'react-router-dom';
 
 const Dropdown = () => {
   const [isHovered, setIsHovered] = useState(false);
-  const [timeoutId, setTimeoutId] = useState(null);
+  const { dispatch } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (isHovered) {
-      clearTimeout(timeoutId);
-    } else {
-      const newTimeoutId = setTimeout(() => {
-        setIsHovered(false);
-      }, 3000);
-      setTimeoutId(newTimeoutId);
-    }
+  const navigate = useNavigate();
 
-    return () => clearTimeout(timeoutId);
-  }, [timeoutId, isHovered]);
+  let timeoutId;
 
   const handleMouseEnter = () => {
     clearTimeout(timeoutId);
@@ -26,13 +20,17 @@ const Dropdown = () => {
   };
 
   const handleMouseLeave = () => {
-    const newTimeoutId = setTimeout(() => {
+    timeoutId = setTimeout(() => {
       setIsHovered(false);
     }, 3000);
-    setTimeoutId(newTimeoutId);
   };
 
-  console.log(timeoutId);
+  const handleSignOut = e => {
+    e.preventDefault();
+    logoutUser(dispatch);
+
+    navigate('/login');
+  };
 
   return (
     <div className='profile'>
@@ -76,9 +74,12 @@ const Dropdown = () => {
             })}
           </div>
           <hr className='mt-3' />
-          <span className='flex items-center justify-center text-[13px] px-[10px] pt-4'>
+          <button
+            className='flex items-center justify-center text-[13px] px-[10px] pt-4'
+            onClick={handleSignOut}
+          >
             Sign out of Netflix
-          </span>
+          </button>
         </div>
       )}
     </div>
