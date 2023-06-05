@@ -19,7 +19,9 @@ const Navbar = () => {
       className={isScrolled ? 'nav-container nav-scrolled' : 'nav-container'}
     >
       <div className='nav-left'>
-        <img className='nav-logo' src={avatar} alt='Netflix Logo' />
+        <Link to='/'>
+          <img className='nav-logo' src={avatar} alt='Netflix Logo' />
+        </Link>
         <div className='flex items-center justify-center gap-[20px] hover:cursor-pointer'>
           {headerLinks.map(items => {
             const { id, path, text } = items;

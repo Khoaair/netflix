@@ -1,10 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ArrowDropDown, ArrowDropUp } from '@mui/icons-material';
 import { userAvatar, dropdown } from '../utils/avatar';
 import { AuthContext } from '../context/authContext/authContext';
 import { logoutUser } from '../context/authContext/apiCalls';
-import { redirect, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Dropdown = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,14 +22,13 @@ const Dropdown = () => {
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setIsHovered(false);
-    }, 3000);
+    }, 2000);
   };
 
   const handleSignOut = e => {
     e.preventDefault();
+    navigate('/register');
     logoutUser(dispatch);
-
-    navigate('/login');
   };
 
   return (

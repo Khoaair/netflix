@@ -20,7 +20,7 @@ const authReducer = (state, action) => {
   if (action.type === 'LOGOUT') {
     return {
       ...state,
-      isFetching: true,
+      user: null,
     };
   }
   return state;
