@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 import Featured from '../components/Featured';
 import List from '../components/List';
 import customFetch from '../utils/axios';
-import { accessToken } from '../utils/accessToken';
+import { getAccessToken } from '../utils/accessToken';
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
   const [genre, setGenre] = useState(null);
@@ -19,7 +19,7 @@ const Home = ({ type }) => {
           }`,
           {
             headers: {
-              token: accessToken,
+              token: getAccessToken(),
             },
           }
         );

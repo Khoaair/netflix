@@ -33,8 +33,6 @@ const register = () => {
     }
   };
 
-  console.log(username, email, password);
-
   return (
     <div className='register'>
       <div className='top'>

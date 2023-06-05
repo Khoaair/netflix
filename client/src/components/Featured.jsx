@@ -3,7 +3,7 @@ import { InfoOutlined, PlayArrow } from '@mui/icons-material';
 import React, { useEffect, useState } from 'react';
 import { filmOptions } from '../utils/options';
 import customFetch from '../utils/axios';
-import { accessToken, getAccessToken } from '../utils/accessToken';
+import { getAccessToken } from '../utils/accessToken';
 
 // eslint-disable-next-line react/prop-types
 const Featured = ({ type, setGenre }) => {

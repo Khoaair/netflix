@@ -9,7 +9,7 @@ import {
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import customFetch from '../utils/axios';
-import { accessToken } from '../utils/accessToken';
+import { getAccessToken } from '../utils/accessToken';
 
 const ListItems = ({ item, index }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -20,7 +20,7 @@ const ListItems = ({ item, index }) => {
       try {
         const res = await customFetch.get('movies' + item, {
           headers: {
-            token: accessToken,
+            token: getAccessToken(),
           },
         });
         setMovie(res.data);

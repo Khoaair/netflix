@@ -1,18 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './list.css';
-// import { updateMovie } from '../../context/movieContext/apiCalls';
-// import { MoviesContext } from '../../context/movieContext/MoviesContext';
 
 export default function List() {
   const location = useLocation();
   const { list } = location.state;
 
-  // const { dispatch } = useContext(MoviesContext);
-
   const [movieUpdate, setMovieUpdate] = useState(null);
-  // const [trailer, setTrailer] = useState(null);
-  // const [video, setVideo] = useState(null);
 
   const handleChange = e => {
     let value = e.target.value;
@@ -21,7 +15,6 @@ export default function List() {
 
   const handleUpdate = e => {
     e.preventDefault();
-    // updateMovie(movie._id, movieUpdate, dispatch);
   };
 
   return (
