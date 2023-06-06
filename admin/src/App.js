@@ -17,6 +17,7 @@ import { AuthContext } from './context/authContext/authContext';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import List from './pages/list/List';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const { user } = useContext(AuthContext);
