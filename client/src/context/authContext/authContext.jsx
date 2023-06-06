@@ -3,7 +3,6 @@
 import React, { createContext, useEffect } from 'react';
 import { useReducer } from 'react';
 import AuthReducer from './AuthReducer';
-import { getUserFromLocalStorage } from '../../utils/localStorage';
 
 const storedUser = localStorage.getItem('user');
 const parsedUser = storedUser ? JSON.parse(storedUser) : null;

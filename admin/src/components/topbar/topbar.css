@@ -56,3 +56,17 @@
   border-radius: 50%;
   cursor: pointer;
 }
+
+.user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.sign-out {
+  border: none;
+  cursor: pointer;
+  background-color: teal;
+  color: #fff;
+}

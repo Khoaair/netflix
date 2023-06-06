@@ -16,6 +16,7 @@ import NewList from './pages/newList/NewList';
 import { AuthContext } from './context/authContext/authContext';
 import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 import List from './pages/list/List';
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -63,6 +64,7 @@ function App() {
           </>
         )}
       </Switch>
+      <ToastContainer position='top-center' theme='colored' />
     </Router>
   );
 }

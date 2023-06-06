@@ -5,11 +5,10 @@ import { login } from '../../context/authContext/apiCalls';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const { isFetching, dispatch } = useContext(AuthContext);
+  const { dispatch } = useContext(AuthContext);
 
   const handleLogin = e => {
     e.preventDefault();
-    console.log('login');
     login({ email, password }, dispatch);
   };
   return (
@@ -33,11 +32,7 @@ const Login = () => {
           value={password}
           onChange={e => setPassword(e.target.value)}
         />
-        <button
-          className='loginButton'
-          onClick={handleLogin}
-          disabled={isFetching}
-        >
+        <button className='loginButton' onClick={handleLogin}>
           Login
         </button>
       </form>

@@ -24,18 +24,20 @@ const Navbar = () => {
         </Link>
         <div className='flex items-center justify-center gap-[20px] hover:cursor-pointer'>
           {headerLinks.map(items => {
-            const { id, path, text } = items;
+            const { id, path, text, className } = items;
             return (
-              <Link key={id} to={path}>
-                {text}
+              <Link key={id} to={path} className={className}>
+                <span>{text}</span>
               </Link>
             );
           })}
         </div>
       </div>
       <div className='nav-right'>
-        <Search />
-        <Notifications />
+        <div className='flex items-center md:hidden'>
+          <Search />
+          <Notifications />
+        </div>
         <div className='flex items-center'>
           <span>
             <img src={user} alt='avatar' className='nav-avatar' />

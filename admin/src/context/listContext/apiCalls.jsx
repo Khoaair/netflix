@@ -1,4 +1,5 @@
 import customFetch from '../../utils/axios';
+import { getAccessToken } from '../../utils/getAccessToken';
 import {
   getListsStart,
   getListsFailure,
@@ -14,17 +15,13 @@ import {
   updateListSuccess,
 } from './ListActions';
 
-const accessToken = `Bearer ${
-  JSON.parse(localStorage.getItem('user')).accessToken
-}`;
-
 // GET
 export const getLists = async dispatch => {
   dispatch(getListsStart());
   try {
     const res = await customFetch.get('/lists', {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(getListsSuccess(res.data));
@@ -39,7 +36,7 @@ export const updateList = async (id, list, dispatch) => {
   try {
     const res = await customFetch.put(`lists/${id}`, list, {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(updateListSuccess(res.data));
@@ -54,7 +51,7 @@ export const createList = async (list, dispatch) => {
   try {
     const res = await customFetch.post('/lists', list, {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(createListSuccess(res.data));
@@ -69,7 +66,7 @@ export const deleteList = async (id, dispatch) => {
   try {
     await customFetch.delete('/lists/' + id, {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(deleteListSuccess(id));

@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess } from './AuthActions';
+import { loginFailure, loginStart, loginSuccess, logout } from './AuthActions';
 import customFetch from '../../utils/axios';
 
 export const login = async (user, dispatch) => {
@@ -9,4 +9,9 @@ export const login = async (user, dispatch) => {
   } catch (error) {
     dispatch(loginFailure());
   }
+};
+
+export const logoutUser = dispatch => {
+  localStorage.removeItem('user');
+  dispatch(logout());
 };

@@ -1,4 +1,5 @@
 import customFetch from '../../utils/axios';
+import { getAccessToken } from '../../utils/getAccessToken';
 import {
   getMoviesStart,
   getMoviesFailure,
@@ -14,17 +15,13 @@ import {
   updateMovieSuccess,
 } from './MovieActions';
 
-const accessToken = `Bearer ${
-  JSON.parse(localStorage.getItem('user')).accessToken
-}`;
-
 // GET
 export const getMovies = async dispatch => {
   dispatch(getMoviesStart());
   try {
     const res = await customFetch.get('/movies', {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(getMoviesSuccess(res.data));
@@ -39,7 +36,7 @@ export const updateMovie = async (id, movie, dispatch) => {
   try {
     const res = await customFetch.put(`movies/${id}`, movie, {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(updateMovieSuccess(res.data));
@@ -54,7 +51,7 @@ export const createMovie = async (movie, dispatch) => {
   try {
     const res = await customFetch.post('/movies', movie, {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(createMovieSuccess(res.data));
@@ -69,7 +66,7 @@ export const deleteMovie = async (id, dispatch) => {
   try {
     await customFetch.delete('/movies/' + id, {
       headers: {
-        token: accessToken,
+        token: getAccessToken(),
       },
     });
     dispatch(deleteMovieSuccess(id));
