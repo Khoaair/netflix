@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import customFetch from '../../utils/axios';
 import { getAccessToken } from '../../utils/getAccessToken';
 import {
@@ -27,6 +28,7 @@ export const getMovies = async dispatch => {
     dispatch(getMoviesSuccess(res.data));
   } catch (error) {
     dispatch(getMoviesFailure());
+    toast.error(error.response.data);
   }
 };
 
@@ -40,8 +42,10 @@ export const updateMovie = async (id, movie, dispatch) => {
       },
     });
     dispatch(updateMovieSuccess(res.data));
+    toast.success('Update Movie Success');
   } catch (error) {
     dispatch(updateMovieFailure());
+    toast.error(error.response.data);
   }
 };
 
@@ -55,8 +59,10 @@ export const createMovie = async (movie, dispatch) => {
       },
     });
     dispatch(createMovieSuccess(res.data));
+    toast.success('Create Movie Success');
   } catch (error) {
     dispatch(createMovieFailure());
+    toast.error(error.response.data);
   }
 };
 
@@ -70,7 +76,9 @@ export const deleteMovie = async (id, dispatch) => {
       },
     });
     dispatch(deleteMovieSuccess(id));
+    toast.success('Delete Movie Success');
   } catch (error) {
     dispatch(deleteMovieFailure());
+    toast.error(error.response.data);
   }
 };

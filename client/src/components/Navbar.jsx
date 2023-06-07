@@ -22,7 +22,7 @@ const Navbar = () => {
         <Link to='/'>
           <img className='nav-logo' src={avatar} alt='Netflix Logo' />
         </Link>
-        <div className='flex items-center justify-center gap-[20px] hover:cursor-pointer'>
+        <div className='flex gap-[20px] lg:flex lg:items-center lg:justify-center lg:gap-[20px]'>
           {headerLinks.map(items => {
             const { id, path, text, className } = items;
             return (
@@ -34,7 +34,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className='nav-right'>
-        <div className='flex items-center md:hidden'>
+        <div className='hidden md:flex md:items-center md:gap-4'>
           <Search />
           <Notifications />
         </div>

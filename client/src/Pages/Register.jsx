@@ -34,11 +34,19 @@ const register = () => {
   };
 
   return (
-    <div className='register'>
+    <div
+      className='register'
+      style={{
+        backgroundImage:
+          'url(https://assets.nflxext.com/ffe/siteui/vlv3/efb4855d-e702-43e5-9997-bba0154152e0/d9d1144a-d86f-449b-b110-641145dee09d/VN-en-20230417-popsignuptwoweeks-perspective_alpha_website_large.jpg)',
+        backgroundPosition: 'center ',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
       <div className='top'>
-        <div className='wrapper'>
+        <div className='register-wrapper'>
           <img
-            className='logo'
+            className='nav-logo'
             src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Netflix_2015_logo.svg/2560px-Netflix_2015_logo.svg.png'
             alt=''
           />

@@ -1,18 +1,18 @@
 .register {
-  @apply w-[100vw] h-[100vh] relative bg-[url('https://assets.nflxext.com/ffe/siteui/vlv3/efb4855d-e702-43e5-9997-bba0154152e0/d9d1144a-d86f-449b-b110-641145dee09d/VN-en-20230417-popsignuptwoweeks-perspective_alpha_website_large.jpg')];
+  @apply w-full h-[100vh] relative bg-gradient-to-b from-[rgba(0,0,0,0.7)] to-[rgba(0,0,0,0.1)];
 }
 
-.wrapper {
-  @apply px-[3.75rem] py-5 flex items-center justify-between z-40;
+.register-wrapper {
+  @apply p-3 flex items-center justify-between lg:px-[3.75rem] lg:py-5;
 }
-.logo {
-  @apply h-10;
+.nav-logo {
+  @apply h-6 md:h-10;
 }
 .loginButton {
-  @apply text-base bg-red-500 text-white rounded-md py-1 px-4 font-medium cursor-pointer;
+  @apply text-base bg-red-500 text-white rounded-md py-1 px-4 font-medium cursor-pointer z-40;
 }
 .ResContainer {
-  @apply h-full w-full absolute top-0 left-0 flex flex-col items-center justify-center text-white;
+  @apply h-full w-full absolute top-0 left-0 flex flex-col items-center justify-center text-white text-center;
   & > h1 {
     @apply text-5xl font-extrabold;
   }
@@ -27,7 +27,7 @@
 }
 
 .input {
-  @apply flex justify-between items-center gap-1;
+  @apply flex flex-col justify-between items-center gap-1 lg:flex-row;
   & > input {
     @apply text-black text-base h-full w-[23.75rem] pl-2 rounded-md border-none;
   }

@@ -4,6 +4,7 @@ import {
   addUserToLocalStorage,
   removeUserFromLocalStorage,
 } from '../../utils/localStorage';
+import { toast } from 'react-toastify';
 
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
@@ -13,10 +14,12 @@ export const login = async (user, dispatch) => {
     addUserToLocalStorage(res.data);
   } catch (error) {
     dispatch(loginFailure());
+    toast.error(error.response.data);
   }
 };
 
 export const logoutUser = dispatch => {
   removeUserFromLocalStorage();
   dispatch(logout());
+  toast.success('Logout Success');
 };

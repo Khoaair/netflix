@@ -3,7 +3,7 @@
 /* eslint-disable no-unused-vars */
 
 import React, { useContext, useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import { login } from '../context/authContext/apiCalls';
 import { AuthContext } from '../context/authContext/authContext';
 
@@ -72,7 +72,10 @@ const Login = () => {
           </form>
           <div className='bottom'>
             <span>
-              New to Netflix? <b>Sign up now.</b>
+              New to Netflix?{' '}
+              <Link to='/register' className='text-white'>
+                Sign up now.
+              </Link>
             </span>
             <small>
               This page is protected by Google reCAPTCHA to ensure you're not a

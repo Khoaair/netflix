@@ -1,5 +1,5 @@
 .featured {
-  @apply h-[90vh] relative text-white;
+  @apply hidden md:h-[25vh] md:relative md:text-white lg:h-[90vh] lg:inline-block lg:w-full;
 
   & > .category {
     @apply absolute top-20 left-[3.75rem] first-line:font-bold text-white flex items-center gap-12;

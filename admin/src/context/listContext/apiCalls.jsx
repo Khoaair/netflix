@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import customFetch from '../../utils/axios';
 import { getAccessToken } from '../../utils/getAccessToken';
 import {
@@ -40,8 +41,10 @@ export const updateList = async (id, list, dispatch) => {
       },
     });
     dispatch(updateListSuccess(res.data));
+    toast.success('Update Done');
   } catch (error) {
     dispatch(updateListFailure());
+    toast.error(error.response.data);
   }
 };
 
@@ -55,8 +58,10 @@ export const createList = async (list, dispatch) => {
       },
     });
     dispatch(createListSuccess(res.data));
+    toast.success('Create List Success');
   } catch (error) {
     dispatch(createListFailure());
+    toast.error(error.response.data);
   }
 };
 
@@ -70,7 +75,9 @@ export const deleteList = async (id, dispatch) => {
       },
     });
     dispatch(deleteListSuccess(id));
+    toast.success('Delete List Success');
   } catch (error) {
     dispatch(deleteListFailure());
+    toast.error(error.response.data);
   }
 };

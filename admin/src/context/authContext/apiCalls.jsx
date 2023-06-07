@@ -7,10 +7,10 @@ export const login = async (user, dispatch) => {
   try {
     const res = await customFetch.post('/auth/login', user);
     res.data.isAdmin && dispatch(loginSuccess(res.data));
-    toast.success('Login success');
   } catch (error) {
     dispatch(loginFailure());
-    toast.error('erro');
+    toast.error(error.response.data);
+    console.log(error);
   }
 };
 

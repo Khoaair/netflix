@@ -23,7 +23,7 @@ export default function WidgetSm() {
       }
     };
     getNewUsers();
-  }, []);
+  }, [user.accessToken]);
 
   return (
     <div className='widgetSm'>
