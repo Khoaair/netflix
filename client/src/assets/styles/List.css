@@ -6,7 +6,7 @@
   @apply text-white text-2xl ml-[3.75rem] font-medium;
 }
 
-.wrapper {
+.list-wrapper {
   @apply relative;
 
   &:hover > .sliderArrow {
