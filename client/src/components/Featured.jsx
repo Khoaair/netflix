@@ -4,11 +4,12 @@ import React, { useEffect, useState } from 'react';
 import { filmOptions } from '../utils/options';
 import customFetch from '../utils/axios';
 import { getAccessToken } from '../utils/accessToken';
+import { Link } from 'react-router-dom';
 
 // eslint-disable-next-line react/prop-types
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState([]);
-
+  console.log(content.trailer);
   useEffect(() => {
     const getRandomMovie = async () => {
       try {
@@ -31,7 +32,7 @@ const Featured = ({ type, setGenre }) => {
     <div className='featured'>
       {type && (
         <div className='category'>
-          <span>{type === 'movies' ? 'Movies' : 'Series'}</span>
+          <span>{type === 'movie' ? 'Movies' : 'Series'}</span>
           <select
             name='genre'
             id='genre'
@@ -51,16 +52,13 @@ const Featured = ({ type, setGenre }) => {
       )}
       <img src={content.img} alt='featured image' />
       <div className='info'>
-        <img
-          src='http://occ-0-58-300.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABS6y6LFtVFyveiCaehIQtC-eX0iRwVlUlWYXEIjPqv1TTG2v7ExkGoH05aVVvDGBQilebZsnTbx891IwIzIoDv65AQQMsevtaphs-cTWC4CbUyCM6--YK06ndiJiaUGZ10AY5GpIvjApRN3wYLZF3sl7pmYpZKsB_4m8b53BI2VujEYXwSYD1Q.png?r=cce'
-          alt=''
-        />
+        <img src={content.imgTitle} alt='' />
         <span className='desc'>{content.desc}</span>
         <div className='buttons'>
-          <button className='play'>
+          <Link to='watch' state={{ movie: content }} className='play'>
             <PlayArrow sx={{ fontSize: '2.125rem' }} />
             <span>Play</span>
-          </button>
+          </Link>
           <button className='more'>
             <InfoOutlined sx={{ fontSize: '2.125rem' }} />
             <span>More Info</span>

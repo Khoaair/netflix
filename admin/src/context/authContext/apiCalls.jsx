@@ -10,7 +10,6 @@ export const login = async (user, dispatch) => {
   } catch (error) {
     dispatch(loginFailure());
     toast.error(error.response.data);
-    console.log(error);
   }
 };
 

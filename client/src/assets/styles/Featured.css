@@ -24,19 +24,16 @@
       @apply w-80;
     }
     & > .desc {
-      @apply my-7 text-[1.375rem];
+      @apply my-7 text-xl;
     }
   }
 }
 .buttons {
   @apply min-w-max flex gap-4;
-  & > button {
-    @apply rounded-md flex items-center cursor-pointer py-[0.625rem] pl-8 pr-10 text-lg font-bold;
-  }
   & > .play {
-    @apply bg-white text-black hover:opacity-80;
+    @apply bg-white text-black rounded-md flex items-center cursor-pointer py-[0.625rem] pl-8 pr-10 text-lg font-bold hover:opacity-80;
   }
   & > .more {
-    @apply w-48 bg-[#6d6d6e] text-white hover:opacity-70;
+    @apply w-48 bg-[#6d6d6e] rounded-md flex items-center cursor-pointer py-[0.625rem] pl-8 pr-10 text-lg font-bold text-white hover:opacity-70;
   }
 }
