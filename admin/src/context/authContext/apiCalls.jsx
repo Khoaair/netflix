@@ -16,5 +16,5 @@ export const login = async (user, dispatch) => {
 export const logoutUser = dispatch => {
   localStorage.removeItem('user');
   dispatch(logout());
-  toast.success('Logout Success');
+  // toast.success('Logout Success');
 };
