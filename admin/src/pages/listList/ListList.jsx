@@ -9,6 +9,8 @@ import { getLists, deleteList } from '../../context/listContext/apiCalls';
 export default function ListList() {
   const { lists, dispatch } = useContext(ListsContext);
 
+  console.log(lists);
+
   useEffect(() => {
     getLists(dispatch);
   }, [dispatch]);

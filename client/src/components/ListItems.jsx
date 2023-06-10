@@ -18,7 +18,7 @@ const ListItems = ({ item, index }) => {
   useEffect(() => {
     const getMovie = async () => {
       try {
-        const res = await customFetch.get('movies' + item, {
+        const res = await customFetch.get('/movies/find/' + item, {
           headers: {
             token: getAccessToken(),
           },
@@ -30,6 +30,8 @@ const ListItems = ({ item, index }) => {
     };
     getMovie();
   }, [item]);
+
+  console.log(movie);
 
   return (
     <Link to='/watch' state={{ movie: movie }}>
