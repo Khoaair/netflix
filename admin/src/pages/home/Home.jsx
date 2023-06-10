@@ -4,10 +4,10 @@ import FeaturedInfo from '../../components/featuredInfo/FeaturedInfo';
 import './home.css';
 import WidgetSm from '../../components/widgetSm/WidgetSm';
 import WidgetLg from '../../components/widgetLg/WidgetLg';
-import axios from 'axios';
+import customFetch from '../../utils/axios';
+import { getAccessToken } from '../../utils/getAccessToken';
 
 export default function Home() {
-  const url = 'http://localhost:8800/api/';
   const MONTHS = useMemo(
     () => [
       'Jan',
@@ -31,10 +31,9 @@ export default function Home() {
   useEffect(() => {
     const getStats = async () => {
       try {
-        const res = await axios.get(`${url}users/stats`, {
+        const res = await customFetch.get(`users/stats`, {
           headers: {
-            token:
-              'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0NWY0ZTAzY2E0NGIwZTI4MDEwYjRiZSIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY4NDMxMDM4NSwiZXhwIjoxNjg0NzQyMzg1fQ.qpVNJEs4DCBzfWoRvEDAWa6viL4PR-v-nJksbxQ-zBs',
+            token: getAccessToken(),
           },
         });
         const statsList = res.data.sort((a, b) => {
