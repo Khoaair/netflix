@@ -31,8 +31,6 @@ const ListItems = ({ item, index }) => {
     getMovie();
   }, [item]);
 
-  console.log(movie);
-
   return (
     <Link to='/watch' state={{ movie: movie }}>
       <div

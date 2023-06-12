@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 // eslint-disable-next-line react/prop-types
 const Featured = ({ type, setGenre }) => {
   const [content, setContent] = useState([]);
-  console.log(content.trailer);
   useEffect(() => {
     const getRandomMovie = async () => {
       try {
