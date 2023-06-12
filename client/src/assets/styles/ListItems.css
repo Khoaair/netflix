@@ -4,10 +4,10 @@
   &:hover {
     -webkit-box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.16);
     box-shadow: 0px 0px 15px 0px rgba(255, 255, 255, 0.16);
-    @apply w-[26.4375rem] h-[27.5625rem] absolute -top-[14.5rem];
+    @apply md:w-[26.4375rem] md:h-[27.5625rem] md:absolute md:-top-[14.5rem];
 
     & > img {
-      @apply w-[26.4375rem] h-[14.9375rem] object-cover;
+      @apply md:w-[26.4375rem] md:h-[14.9375rem] md:object-cover;
     }
   }
 
