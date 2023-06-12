@@ -25,8 +25,6 @@ const List = ({ list }) => {
       setSlideNumber(slideNumber + 1);
       listRef.current.style.transform = `translateX(${-292 + distance}px)`;
     }
-
-    console.log(distance);
   };
   return (
     <div className='list'>
