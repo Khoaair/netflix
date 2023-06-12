@@ -9,8 +9,6 @@ import { getAccessToken } from '../utils/accessToken';
 import { TypeGenreContext } from '../context/typeGenreContext/typeGenreContext';
 const Home = ({ type }) => {
   const [lists, setLists] = useState([]);
-  // const [genre, setGenre] = useState(null);
-
   const { genre, setGenre } = useContext(TypeGenreContext);
 
   useEffect(() => {

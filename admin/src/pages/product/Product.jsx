@@ -12,8 +12,6 @@ export default function Product() {
   const { dispatch } = useContext(MoviesContext);
 
   const [movieUpdate, setMovieUpdate] = useState(null);
-  // const [trailer, setTrailer] = useState(null);
-  // const [video, setVideo] = useState(null);
 
   const handleChange = e => {
     let value = e.target.value;
