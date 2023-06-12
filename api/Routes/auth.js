@@ -5,15 +5,23 @@ const jwt = require('jsonwebtoken');
 
 // REGISTER
 router.post('/register', async (req, res) => {
-  const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
-    password: CryptoJS.AES.encrypt(
-      req.body.password,
-      process.env.SECRET_KEY
-    ).toString(),
-  });
   try {
+    const existingUser = await User.findOne({
+      $or: [{ username: req.body.username }, { email: req.body.email }],
+    });
+
+    if (existingUser) {
+      return res.status(409).json('Username or email already exists');
+    }
+
+    const newUser = new User({
+      username: req.body.username,
+      email: req.body.email,
+      password: CryptoJS.AES.encrypt(
+        req.body.password,
+        process.env.SECRET_KEY
+      ).toString(),
+    });
     const user = await newUser.save();
     res.status(201).json(user);
   } catch (err) {
@@ -25,6 +33,9 @@ router.post('/register', async (req, res) => {
 router.post('/login', async (req, res) => {
   try {
     const user = await User.findOne({ email: req.body.email });
+    if (!user) {
+      return res.status(401).json('Wrong password or username!');
+    }
     const { password, ...info } = user._doc;
 
     const accessToken = jwt.sign(
@@ -32,10 +43,6 @@ router.post('/login', async (req, res) => {
       process.env.SECRET_KEY,
       { expiresIn: '5d' }
     );
-
-    if (!user) {
-      return res.status(401).json('Wrong password or username!');
-    }
 
     const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
     const originalPassword = bytes.toString(CryptoJS.enc.Utf8);

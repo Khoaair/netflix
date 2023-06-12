@@ -39,7 +39,7 @@ function App() {
         <Route path='/login' element={user ? <Navigate to='/' /> : <Login />} />
         <Route path='*' element={<Error />} />
       </Routes>
-      <ToastContainer position='top-center' theme='colored' />
+      <ToastContainer position='top-center' theme='colored' autoClose={1000} />
     </BrowserRouter>
   );
 }

@@ -3,6 +3,7 @@
 import React, { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import customFetch from '../utils/axios';
+import { toast } from 'react-toastify';
 
 const register = () => {
   const [email, setEmail] = useState('');
@@ -28,8 +29,11 @@ const register = () => {
     try {
       await customFetch.post('auth/register', { email, username, password });
       navigate('/login');
+      toast.success('Register Success');
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data);
+      setEmail('');
     }
   };
 
