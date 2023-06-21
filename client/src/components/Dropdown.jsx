@@ -22,7 +22,7 @@ const Dropdown = () => {
   const handleMouseLeave = () => {
     timeoutId = setTimeout(() => {
       setIsHovered(false);
-    }, 1000);
+    }, 2000);
   };
 
   const handleSignOut = e => {
