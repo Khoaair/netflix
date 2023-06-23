@@ -3,7 +3,7 @@
 
 ## Introduction
 
-This application (Netflix Clone) have two sides, one is client side was build using ReactJS(Context, Custom Hooks) and server side was build using nodeJS, express, mongoDB. I have built the following pages within this application: sign in, sign up, browser and lastly the homepage. There are four different pages, some using protected routes with auth listeners.
+This application (Netflix Clone) has two sides, one is client-side was built using ReactJS(Context, Custom Hooks), and the server side was built using nodeJS, express, mongoDB. I have built the following pages within this application: sign in, sign up, browser, and lastly the homepage. There are four different pages, some using protected routes with auth listeners.
 
 ## Main Technology
 
@@ -18,12 +18,12 @@ This application (Netflix Clone) have two sides, one is client side was build us
 ## ✨ <a name="features"></a>Features
 For user:
 - Register new user, user login.
-- Fetching ramdom feature movie and random lists.
-- Can load only movies or series based on user choose and ofcourse user can choose any genre.
-- Hover to movies or series to see details and trailer.
-- If you click to movies or series you can watched the trailer.
+- Fetching random feature movies and random lists.
+- Can load only movies or series based on user choice and of course user can choose any genre.
+- Hover on movies or series to see details and trailer.
+- If you click on movies or series you can watch the trailer.
 For Admin:
-- Admin can create, remove the movies/series and lists of movies/series
+- Admin can create, and remove the movies/series and lists of movies/series
 
 ## Development
 
