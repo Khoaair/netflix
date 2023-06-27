@@ -1,11 +1,14 @@
 import { Language, Logout, Settings } from '@mui/icons-material';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
+import { Link } from 'react-router-dom';
 const Topbar = () => {
   return (
     <div className='w-full h-12 sticky top-0 z-50 bg-white text-lg'>
       <div className='h-full px-5 flex items-center justify-between'>
         <div>
-          <span className='font-bold text-3xl text-blue-900'>admin</span>
+          <Link to='/' className='font-bold text-3xl text-blue-900'>
+            admin
+          </Link>
         </div>
         <div className='flex items-center gap-2 text-gray-600 '>
           <div className='relative '>

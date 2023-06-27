@@ -25,7 +25,7 @@ const Home = () => {
   // const [userStats, setUserStats] = useState([]);
 
   return (
-    <div>
+    <div className='flex-[4]'>
       <FeatureInfo />
       {/* <Chart data={userStats} title='User Analytics' grid dataKey='New User' /> */}
       <div className='flex gap-5'>

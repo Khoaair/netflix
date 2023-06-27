@@ -21,7 +21,7 @@ export const dashboard = [
 export const quickMenu = [
   { text: 'Users', icon: <PersonOutline />, path: '/users' },
   { text: 'Movies', icon: <PlayCircleOutline />, path: '/movies' },
-  { text: 'List', icon: <FormatListBulleted />, path: '/Lists' },
+  { text: 'List', icon: <FormatListBulleted />, path: '/list' },
   { text: 'Reports', icon: <BarChart />, path: '/' },
 ];
 export const notification = [
