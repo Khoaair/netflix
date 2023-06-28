@@ -24,8 +24,12 @@ const MovieList = () => {
       width: 200,
       renderCell: params => {
         return (
-          <div className='productListItem'>
-            <img className='productListImg' src={params.row.img} alt='' />
+          <div className='flex items-center gap-2'>
+            <img
+              className='w-8 h-8 rounded-full object-cover'
+              src={params.row.img}
+              alt=''
+            />
             {params.row.title}
           </div>
         );
@@ -43,16 +47,14 @@ const MovieList = () => {
       renderCell: params => {
         return (
           <>
-            <Link
-              to={{
-                pathname: `/product/${params.row._id}`,
-                state: { movie: params.row },
-              }}
-            >
-              <button className='productListEdit'>Edit</button>
+            <Link to={`/movie/${params.row._id}`} state={{ movie: params.row }}>
+              <button className='rounded-[10px] py-1 px-2 bg-[#3bb077] text-white mr-5 text-sm'>
+                Edit
+              </button>
             </Link>
             <DeleteOutline
-              className='productListDelete'
+              className='cursor-pointer'
+              sx={{ color: 'red' }}
               onClick={() => handleDelete(params.row._id)}
             />
           </>
@@ -62,7 +64,7 @@ const MovieList = () => {
   ];
 
   return (
-    <div className='productList'>
+    <div className='flex-[4]'>
       <DataGrid
         rows={movies}
         disableSelectionOnClick

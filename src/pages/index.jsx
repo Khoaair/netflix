@@ -10,6 +10,7 @@ import NewMovie from './NewMovie';
 import NewList from './NewList';
 import ProtectedRoute from './ProtectedRoute';
 import Login from './Login';
+import Error from './Error';
 export {
   Home,
   User,
@@ -23,4 +24,5 @@ export {
   NewList,
   ProtectedRoute,
   Login,
+  Error,
 };

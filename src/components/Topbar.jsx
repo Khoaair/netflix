@@ -1,7 +1,17 @@
 import { Language, Logout, Settings } from '@mui/icons-material';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
-import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../context/authContext/AuthContext';
+import { logoutUser } from '../context/authContext/apiCalls';
 const Topbar = () => {
+  const { dispatch } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const handleSignOut = e => {
+    e.preventDefault();
+    logoutUser(dispatch);
+    navigate('/login');
+  };
   return (
     <div className='w-full h-12 sticky top-0 z-50 bg-white text-lg'>
       <div className='h-full px-5 flex items-center justify-between'>
@@ -28,9 +38,9 @@ const Topbar = () => {
             alt=''
             className='w-10 h-10 rounded-full object-cover cursor-pointer'
           />
-          <div>
+          <button onClick={handleSignOut}>
             <Logout />
-          </div>
+          </button>
         </div>
       </div>
     </div>
