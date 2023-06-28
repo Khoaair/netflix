@@ -30,18 +30,14 @@ const ListList = () => {
       renderCell: params => {
         return (
           <>
-            <Link
-              to={{
-                pathname: `/list/${params.row._id}`,
-                state: { list: params.row },
-              }}
-            >
+            <Link to={`/list/${params.row._id}`} state={{ list: params.row }}>
               <button className='rounded-[10px] px-[10px] py-[5px] bg-[#3bb077] text-white cursor-pointer mr-5'>
                 Edit
               </button>
             </Link>
             <DeleteOutline
-              className='bg-red-500 cursor-pointer'
+              className='cursor-pointer'
+              sx={{ color: 'red' }}
               onClick={() => handleDelete(params.row._id)}
             />
           </>
