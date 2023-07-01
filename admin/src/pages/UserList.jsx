@@ -2,14 +2,35 @@ import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@mui/icons-material';
 import { userRows } from '../utils/dummyData';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import customFetch from '../utils/axios';
+import { getAccessToken } from '../utils/getAccessToken';
 
 export default function UserList() {
   const [data, setData] = useState(userRows);
+  const [user, setUser] = useState([]);
 
   const handleDelete = id => {
     setData(data.filter(item => item.id !== id));
   };
+
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const res = await customFetch.get('users', {
+          headers: {
+            token: getAccessToken(),
+          },
+        });
+        setUser(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getUser();
+  }, []);
+
+  console.log(user);
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 90 },
