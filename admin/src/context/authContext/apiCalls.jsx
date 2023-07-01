@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess, logout } from './AuthActions';
+import { loginFailure, loginStart, loginSuccess, logout } from './AuthAction';
 import customFetch from '../../utils/axios';
 import { toast } from 'react-toastify';
 

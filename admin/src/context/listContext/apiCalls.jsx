@@ -14,7 +14,7 @@ import {
   updateListStart,
   updateListFailure,
   updateListSuccess,
-} from './ListActions';
+} from './ListAction';
 
 // GET
 export const getLists = async dispatch => {
