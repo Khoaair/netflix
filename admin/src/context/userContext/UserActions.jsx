@@ -9,14 +9,14 @@ export const getUsersFailure = () => ({
   type: 'GET_USERS_FAILURE',
 });
 export const updateUserStart = () => ({
-  type: 'UPDATE_USERS_START',
+  type: 'UPDATE_USER_START',
 });
 export const updateUserSuccess = users => ({
-  type: 'UPDATE_USERS_SUCCESS',
+  type: 'UPDATE_USER_SUCCESS',
   payload: users,
 });
 export const updateUserFailure = () => ({
-  type: 'UPDATE_USERS_FAILURE',
+  type: 'UPDATE_USER_FAILURE',
 });
 export const deleteUserStart = () => ({
   type: 'DELETE_USER_START',
