@@ -18,16 +18,6 @@ export const updateUserSuccess = users => ({
 export const updateUserFailure = () => ({
   type: 'UPDATE_USERS_FAILURE',
 });
-export const createUserStart = () => ({
-  type: 'CREATE_USERS_START',
-});
-export const createUserSuccess = users => ({
-  type: 'CREATE_USERS_SUCCESS',
-  payload: users,
-});
-export const createUserFailure = () => ({
-  type: 'CREATE_USERS_FAILURE',
-});
 export const deleteUserStart = () => ({
   type: 'DELETE_USER_START',
 });
