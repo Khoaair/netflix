@@ -8,6 +8,9 @@ import {
   getUsersFailure,
   getUsersStart,
   getUsersSuccess,
+  updateUserFailure,
+  updateUserStart,
+  updateUserSuccess,
 } from './UserActions';
 
 // GET
@@ -40,5 +43,22 @@ export const deleteUser = async (id, dispatch) => {
   } catch (error) {
     dispatch(deleteUserFailure());
     toast.error(error.response.data);
+  }
+};
+
+// UPDATE
+export const updateUser = async (id, user, dispatch) => {
+  dispatch(updateUserStart());
+  try {
+    const res = await customFetch.put(`/users/${id}`, user, {
+      headers: {
+        token: getAccessToken(),
+      },
+    });
+    updateUserSuccess(res.data);
+    toast.success('Update user success');
+  } catch (error) {
+    updateUserFailure();
+    toast.error('You can not update user');
   }
 };

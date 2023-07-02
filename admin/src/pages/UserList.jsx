@@ -51,7 +51,7 @@ const UserList = () => {
       renderCell: params => {
         return (
           <>
-            <Link to={'/user/' + params.row.id}>
+            <Link to={`/user/${params.row._id}`} state={{ user: params.row }}>
               <button className='rounded-[10px] py-[5px] px-[10px] bg-[#3bb077] text-white cursor-pointer mr-5'>
                 Edit
               </button>

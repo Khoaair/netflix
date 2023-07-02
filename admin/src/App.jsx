@@ -4,7 +4,6 @@ import {
   Home,
   UserList,
   User,
-  NewUser,
   MovieList,
   Movie,
   ListList,
@@ -33,7 +32,6 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/users' element={<UserList />} />
           <Route path='/user/:userId' element={<User />} />
-          <Route path='/newUser' element={<NewUser />} />
           <Route path='/movies' element={<MovieList />} />
           <Route path='/movie/:movieId' element={<Movie />} />
           <Route path='/newMovie' element={<NewMovie />} />

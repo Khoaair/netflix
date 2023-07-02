@@ -1,7 +1,6 @@
 import Home from './Home';
 import User from './User';
 import UserList from './UserList';
-import NewUser from './NewUser';
 import MovieList from './MovieList';
 import Movie from './Movie';
 import List from './List';
@@ -15,7 +14,6 @@ export {
   Home,
   User,
   UserList,
-  NewUser,
   MovieList,
   Movie,
   List,
