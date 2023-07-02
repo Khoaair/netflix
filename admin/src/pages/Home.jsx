@@ -50,8 +50,6 @@ const Home = () => {
     getStats();
   }, [MONTHS]);
 
-  console.log(userStats);
-
   return (
     <div className='flex-[4]'>
       <FeatureInfo />

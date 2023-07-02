@@ -7,8 +7,10 @@ import {
   Publish,
 } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
+import { UsersContext } from '../context/userContext/UserContext';
 
 const User = () => {
+  const { users, dispatch } = useContext(UsersContext);
   return (
     <div className='p-5 flex-[4]'>
       <div className='flex items-center justify-between'>

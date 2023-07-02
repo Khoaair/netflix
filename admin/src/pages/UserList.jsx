@@ -1,39 +1,23 @@
 import { DataGrid } from '@mui/x-data-grid';
 import { DeleteOutline } from '@mui/icons-material';
-import { userRows } from '../utils/dummyData';
 import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import customFetch from '../utils/axios';
-import { getAccessToken } from '../utils/getAccessToken';
+import { useContext, useEffect } from 'react';
+import { UsersContext } from '../context/userContext/UserContext';
+import { deleteUser, getUsers } from '../context/userContext/apiCalls';
 
-export default function UserList() {
-  const [data, setData] = useState(userRows);
-  const [user, setUser] = useState([]);
-
-  const handleDelete = id => {
-    setData(data.filter(item => item.id !== id));
-  };
+const UserList = () => {
+  const { users, dispatch } = useContext(UsersContext);
 
   useEffect(() => {
-    const getUser = async () => {
-      try {
-        const res = await customFetch.get('users', {
-          headers: {
-            token: getAccessToken(),
-          },
-        });
-        setUser(res.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getUser();
-  }, []);
+    getUsers(dispatch);
+  }, [dispatch]);
 
-  console.log(user);
+  const handleDelete = id => {
+    deleteUser(id, dispatch);
+  };
 
   const columns = [
-    { field: 'id', headerName: 'ID', width: 90 },
+    { field: '_id', headerName: 'ID', width: 90 },
     {
       field: 'user',
       headerName: 'User',
@@ -43,7 +27,10 @@ export default function UserList() {
           <div className='flex items-center'>
             <img
               className='w-8 h-8 rounded-full object-cover mr-3'
-              src={params.row.avatar}
+              src={
+                params.row.profilePic ||
+                'https://occ-0-395-325.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABQbPHLHMADSYHIjUxUrTHwEeJXOX-rF9NpbKyfLmXJnukropAUAR-faZGpu9eIgjUKX5udaZMo6Wze-ifSqCOKW7CfizWSlYJg.png?r=eea'
+              }
               alt=''
             />
             {params.row.username}
@@ -53,14 +40,9 @@ export default function UserList() {
     },
     { field: 'email', headerName: 'Email', width: 200 },
     {
-      field: 'status',
-      headerName: 'Status',
+      field: 'isAdmin',
+      headerName: 'Admin',
       width: 120,
-    },
-    {
-      field: 'transaction',
-      headerName: 'Transaction Volume',
-      width: 160,
     },
     {
       field: 'action',
@@ -76,7 +58,7 @@ export default function UserList() {
             </Link>
             <DeleteOutline
               className='text-red-500 cursor-pointer'
-              onClick={() => handleDelete(params.row.id)}
+              onClick={() => handleDelete(params.row._id)}
             />
           </>
         );
@@ -85,14 +67,16 @@ export default function UserList() {
   ];
 
   return (
-    <div>
+    <div className='flex-[4]'>
       <DataGrid
-        rows={data}
+        rows={users}
         disableSelectionOnClick
         columns={columns}
+        getRowId={r => r._id}
         pageSize={8}
         checkboxSelection
       />
     </div>
   );
-}
+};
+export default UserList;
