@@ -28,6 +28,10 @@ For user:
   For Admin:
 - Admin can create, update, and delete user, movie, and movie lists
 
+## Application website
+- Admin website: https://netflix-admin-project.vercel.app/
+- Netflix website: https://netflix-mern-project.vercel.app/register
+
 ## Development
 
 ---
